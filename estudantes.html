@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Gestão de estudantes do sistema escolar">
+    <title>Gestão de Estudantes | Sistema Escolar</title>
+
+    <link rel="stylesheet" href="css/temas.css">
+    <link rel="stylesheet" href="css/style.css">
+
+    <script src="js/tema.js" defer></script>
+    <script src="js/estudantes.js" defer></script>
+</head>
+<body class="theme-purple">
+
+    <div class="mobile-overlay" id="mobileOverlay"></div>
+
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+           
+            <div>
+                        <a class="sidebar-brand" href="estudantes.html">
+      <span class="brand-mark"><img src="assets/Ipn logo.jpg" alt="" width="50px"></span>
+      <span>Sistema<strong>Escolar</strong></span>
+      <div class="brand-mark" aria-hidden="true">SE</div>
+    </a>
+            </div>
+        </div>
+
+        <nav class="sidebar-nav">
+            <p class="menu-title">MENU PRINCIPAL</p>
+
+            <a href="dashboard.html" class="nav-item">
+                <span>▦</span> Painel principal
+            </a>
+            <a href="estudantes.html" class="nav-item active">
+                <span>♙</span> Estudantes
+            </a>
+            <a href="professores.html" class="nav-item">
+                <span>♧</span> Professores
+            </a>
+            <a href="cursos.html" class="nav-item">
+                <span>▤</span> Cursos
+            </a>
+            <a href="turmas.html" class="nav-item">
+                <span>▣</span> Turmas
+            </a>
+            <a href="disciplinas.html" class="nav-item">
+                <span>▧</span> Disciplinas
+            </a>
+            <a href="desempenho.html" class="nav-item">
+                <span>◷</span> Desempenho
+            </a>
+            <a href="horarios.html" class="nav-item">
+                <span>◷</span> Horários
+            </a>
+            <a href="biblioteca.html" class="nav-item">
+                <span>▥</span> Biblioteca
+            </a>
+            <a href="avisos.html" class="nav-item">
+                <span>♧</span> Avisos
+            </a>
+            <a href="pagamentos.html" class="nav-item">
+                <span>◇</span> Pagamentos
+            </a>
+            <a href="relatorios.html" class="nav-item">
+                <span>▤</span> Relatórios
+            </a>
+
+            <p class="menu-title">COMUNIDADE</p>
+
+            <a href="mercado.html" class="nav-item">
+                <span>🛍</span> Mercado
+            </a>
+            <a href="comunidade.html" class="nav-item">
+                <span>☷</span> Comunidade
+            </a>
+            <a href="grupos.html" class="nav-item">
+                <span>♧</span> Grupos
+            </a>
+
+            <p class="menu-title">CONTA</p>
+
+            <a href="perfil.html" class="nav-item">
+                <span>♙</span> Meu perfil
+            </a>
+            <a href="configuracoes.html" class="nav-item">
+                <span>⚙</span> Configurações
+            </a>
+        </nav>
+
+        <div class="sidebar-bottom">
+            <div class="user-mini">
+                <div class="user-avatar">AD</div>
+                <div>
+                    <strong>Administrador</strong>
+                    <small>Direção escolar</small>
+                </div>
+            </div>
+            <button type="button" class="logout-button" id="logoutButton">
+                ↪ Terminar sessão
+            </button>
+        </div>
+    </aside>
+
+    <main class="main-content">
+        <header class="topbar">
+            <div class="topbar-left">
+                <button type="button" class="mobile-menu-button"
+                        id="mobileMenuButton" aria-label="Abrir menu">
+                    ☰
+                </button>
+                <div class="page-title-block">
+    <span class="page-title-label">ADMINISTRAÇÃO ESCOLAR</span>
+    <h1>Gestão de Estudantes</h1>
+    <p>Regista, consulta e acompanha os estudantes da tua instituição.</p>
+</div>
+            </div>
+
+            <div class="topbar-actions">
+                 <label class="theme-control" for="themeSelect">
+  <span aria-hidden="true">◐</span>
+  <select id="themeSelect" aria-label="Escolher tema de cor">
+    <option value="purple">Roxo</option>
+    <option value="blue">Azul</option>
+    <option value="green">Verde</option>
+    <option value="orange">Preta</option>
+    <option value="pink">Rosa</option>
+  </select>
+</label>
+            </div>
+        </header>
+
+        <section class="page-content">
+
+            <div class="student-stats">
+                <article class="student-stat-card">
+                    <div>
+                        <p>Total de estudantes</p>
+                        <h2 id="totalStudents">0</h2>
+                    </div>
+                    <span class="stat-icon">♙</span>
+                </article>
+
+                <article class="student-stat-card">
+                    <div>
+                        <p>Estudantes ativos</p>
+                        <h2 id="activeStudents">0</h2>
+                    </div>
+                    <span class="stat-icon">✓</span>
+                </article>
+
+                <article class="student-stat-card">
+                    <div>
+                        <p>Estudantes inativos</p>
+                        <h2 id="inactiveStudents">0</h2>
+                    </div>
+                    <span class="stat-icon">Ⅱ</span>
+                </article>
+            </div>
+
+            <section class="content-card">
+                <div class="section-heading">
+                    <div>
+                        <h2>Lista de estudantes</h2>
+                        <p>Pesquisa e administra os registos escolares.</p>
+                    </div>
+
+                    <button type="button" class="primary-button"
+                            id="addStudentButton">
+                        + Novo estudante
+                    </button>
+                </div>
+
+                <div class="student-toolbar">
+                    <input type="search" id="studentSearch"
+                           placeholder="Pesquisar por nome, número ou turma..."
+                           aria-label="Pesquisar estudantes">
+
+                    <select id="classFilter" aria-label="Filtrar por turma">
+                        <option value="">Todas as turmas</option>
+                    </select>
+
+                    <select id="statusFilter" aria-label="Filtrar por estado">
+                        <option value="">Todos os estados</option>
+                        <option value="Ativo">Ativo</option>
+                        <option value="Inativo">Inativo</option>
+                    </select>
+                </div>
+
+                <div class="table-responsive">
+                    <table class="students-table">
+                        <thead>
+                            <tr>
+                                <th>N.º</th>
+                                <th>Estudante</th>
+                                <th>Turma</th>
+                                <th>Contacto</th>
+                                <th>Estado</th>
+                                <th>Ações</th>
+                            </tr>
+                        </thead>
+                        <tbody id="studentsTableBody">
+                            <tr>
+                                <td colspan="6">A carregar estudantes...</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <p class="table-footer" id="studentCount">
+                    A carregar registos...
+                </p>
+            </section>
+
+        </section>
+    </main>
+
+    <!-- Janela de registo e edição -->
+    <div class="modal" id="studentModal"
+         role="dialog" aria-modal="true"
+         aria-labelledby="studentModalTitle" hidden>
+        <div class="modal-backdrop" id="modalBackdrop"></div>
+
+        <section class="modal-content">
+            <div class="modal-heading">
+                <div>
+                    <h2 id="studentModalTitle">Novo estudante</h2>
+                    <p>Preenche os dados do estudante.</p>
+                </div>
+                <button type="button" id="closeStudentModal"
+                        class="modal-close" aria-label="Fechar">
+                    ×
+                </button>
+            </div>
+
+            <form id="studentForm">
+                <input type="hidden" id="studentId">
+
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label for="studentNumber">Número do estudante *</label>
+                        <input id="studentNumber" required maxlength="30"
+                               placeholder="Ex.: EST001">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="studentName">Nome completo *</label>
+                        <input id="studentName" required maxlength="120"
+                               placeholder="Nome do estudante">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="studentClass">Turma *</label>
+                        <input id="studentClass" required maxlength="60"
+                               placeholder="Ex.: 10.ª A">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="studentPhone">Contacto</label>
+                        <input id="studentPhone" type="tel" maxlength="30"
+                               placeholder="Telefone">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="studentStatus">Estado</label>
+                        <select id="studentStatus">
+                            <option value="Ativo">Ativo</option>
+                            <option value="Inativo">Inativo</option>
+                        </select>
+                    </div>
+                </div>
+
+                <p class="form-message" id="studentFormMessage"
+                   role="alert"></p>
+
+                <div class="modal-actions">
+                    <button type="button" class="secondary-button"
+                            id="cancelStudentButton">
+                        Cancelar
+                    </button>
+                    <button type="submit" class="primary-button">
+                        Guardar estudante
+                    </button>
+                </div>
+            </form>
+        </section>
+    </div>
+
+</body>
+</html>

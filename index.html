@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#6C5CE7">
+  <meta name="description" content="Sistema Escolar — gestão académica e comunicação escolar.">
+  <title>Entrar | Sistema Escolar</title>
+
+ <link rel="stylesheet" href="css/temas.css">
+<link rel="stylesheet" href="css/style.css">
+
+<script src="js/tema.js" defer></script>
+<script src="js/app.js" defer></script>
+</head>
+<body class="login-page">
+  <main class="login-layout">
+    <section class="welcome-panel">
+      <div class="brand">
+        <div class="brand-mark" aria-hidden="true">SE</div>
+        <span>Sistema <strong>Escolar</strong></span>
+      </div>
+
+      <div class="welcome-content">
+        <span class="eyebrow">GESTÃO ESCOLAR INTEGRADA</span>
+        <h1>Uma escola mais organizada, conectada e preparada para o futuro.</h1>
+        <p>
+          Um único espaço para acompanhar a vida académica,
+          comunicar com a comunidade escolar e gerir as atividades da instituição.
+        </p>
+
+        <div class="feature-list">
+          <div class="feature-item">
+            <span class="feature-icon" aria-hidden="true">✓</span>
+            <span>Gestão de alunos, professores e turmas</span>
+          </div>
+          <div class="feature-item">
+            <span class="feature-icon" aria-hidden="true">✓</span>
+            <span>Informações académicas num só lugar</span>
+          </div>
+          <div class="feature-item">
+            <span class="feature-icon" aria-hidden="true">✓</span>
+            <span>Comunidade escolar e mercado interno</span>
+          </div>
+        </div>
+      </div>
+
+      <p class="welcome-footer">Organização, comunicação e aprendizagem.</p>
+    </section>
+
+    <section class="login-panel" aria-labelledby="login-title">
+      <div class="login-top">
+        <span class="mobile-brand">Sistema Escolar</span>
+
+       <label class="theme-control" for="themeSelect">
+  <span aria-hidden="true">◐</span>
+  <select id="themeSelect" aria-label="Escolher tema de cor">
+    <option value="purple">Roxo</option>
+    <option value="blue">Azul</option>
+    <option value="green">Verde</option>
+    <option value="orange">Preta</option>
+    <option value="pink">Rosa</option>
+  </select>
+</label>
+      </div>
+
+      <div class="login-card">
+        <div class="login-heading">
+          <span class="eyebrow">BEM-VINDO DE VOLTA</span>
+          <h2 id="login-title">Entrar na sua conta</h2>
+          <p>Introduza os seus dados para continuar.</p>
+        </div>
+
+        <form id="loginForm" novalidate>
+          <div class="form-field">
+            <label for="username">Utilizador</label>
+            <input
+              type="text"
+              id="username"
+              name="username"
+              placeholder="Introduza o seu utilizador"
+              autocomplete="username"
+              required
+            >
+          </div>
+
+          <div class="form-field">
+            <label for="password">Palavra-passe</label>
+            <div class="password-wrap">
+              <input
+                type="password"
+                id="password"
+                name="password"
+                placeholder="Introduza a sua palavra-passe"
+                autocomplete="current-password"
+                required
+              >
+              <button
+                type="button"
+                class="password-toggle"
+                id="togglePassword"
+                aria-label="Mostrar palavra-passe"
+                aria-pressed="false"
+              >Mostrar</button>
+            </div>
+          </div>
+
+          <div class="form-options">
+            <label class="remember-option">
+              <input type="checkbox" id="rememberMe" name="rememberMe">
+              <span>Manter sessão neste dispositivo</span>
+            </label>
+          </div>
+          
+<div class="animation-box pulse">
+          <button class="primary-button" type="submit" id="loginButton ">
+            Entrar no sistema
+            
+            <span aria-hidden="true">→</span>
+          </button>
+</div>
+          
+          <p id="loginMessage" class="form-message" role="status" aria-live="polite"></p>
+        </form>
+
+        <div class="demo-note">
+          <strong>Modo de demonstração</strong>
+          <p>Para testar este ecrã, utiliza:</p>
+          <p>Utilizador: <code>admin</code></p>
+          <p>Palavra-passe: <code>1234</code></p>
+          <button type="button" class="demo-fill-button" id="fillDemo">
+            Preencher dados de demonstração
+          </button>
+        </div>
+
+        <p class="security-note">
+          O acesso real será ligado ao servidor numa etapa posterior.
+        </p>
+      </div>
+
+      <footer class="login-footer">
+        <span>© <span id="currentYear"></span> Sistema Escolar</span>
+        <span>Plataforma de gestão académica</span>
+      </footer>
+    </section>
+  </main>
+</body>
+</html>

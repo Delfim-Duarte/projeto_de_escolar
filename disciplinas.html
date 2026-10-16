@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#6C5CE7">
+    <title>Gestão de Disciplinas | EduGest</title>
+
+    <link rel="stylesheet" href="css/temas.css">
+    <link rel="stylesheet" href="css/style.css">
+
+    <script src="js/tema.js" defer></script>
+    <script src="js/disciplinas.js" defer></script>
+</head>
+
+<body class="theme-purple">
+
+    <div class="mobile-overlay" id="mobileOverlay"></div>
+
+    <aside class="sidebar" id="sidebar">
+
+    <div class="sidebar-header">
+        <div>
+            <a class="sidebar-brand" href="disciplinas.html">
+                <span class="brand-mark">
+                    <img src="assets/Ipn logo.jpg" alt="" width="50px">
+                </span>
+
+                <span>Sistema <strong>Escolar</strong></span>
+
+                <div class="brand-mark" aria-hidden="true">SE</div>
+            </a>
+        </div>
+    </div>
+
+    <nav class="sidebar-nav">
+
+        <p class="menu-title">MENU PRINCIPAL</p>
+
+        <a href="dashboard.html" class="nav-item"><span>▦</span> Painel inicial</a>
+        <a href="estudantes.html" class="nav-item"><span>♙</span> Estudantes</a>
+        <a href="professores.html" class="nav-item"><span>♧</span> Professores</a>
+        <a href="cursos.html" class="nav-item"><span>▤</span> Cursos</a>
+        <a href="turmas.html" class="nav-item"><span>▣</span> Turmas</a>
+        <a href="disciplinas.html" class="nav-item active"><span>▧</span> Disciplinas</a>
+        <a href="desempenho.html" class="nav-item"><span>↗</span> Desempenho</a>
+        <a href="horarios.html" class="nav-item"><span>◷</span> Horários</a>
+        <a href="biblioteca.html" class="nav-item"><span>▥</span> Biblioteca</a>
+        <a href="avisos.html" class="nav-item"><span>♢</span> Avisos</a>
+        <a href="pagamentos.html" class="nav-item"><span>◇</span> Pagamentos</a>
+        <a href="relatorios.html" class="nav-item"><span>▤</span> Relatórios</a>
+
+        <p class="menu-title">COMUNIDADE</p>
+
+        <a href="mercado.html" class="nav-item"><span>🛍</span> Mercado</a>
+        <a href="comunidade.html" class="nav-item"><span>◎</span> Comunidade</a>
+        <a href="grupos.html" class="nav-item"><span>♧</span> Grupos</a>
+
+        <p class="menu-title">PREFERÊNCIAS</p>
+
+        <a href="perfil.html" class="nav-item"><span>♙</span> Meu perfil</a>
+        <a href="configuracoes.html" class="nav-item"><span>⚙</span> Configurações</a>
+
+    </nav>
+
+    <div class="sidebar-bottom">
+        <div class="user-mini">
+            <div class="user-avatar">A</div>
+            <div>
+                <strong>Administrador</strong>
+                <small>Gestão escolar</small>
+            </div>
+        </div>
+
+        <button class="logout-button" id="logoutButton" type="button">
+            ↪ Terminar sessão
+        </button>
+    </div>
+
+</aside>
+
+    <main class="main-content">
+        <header class="topbar">
+            <div class="topbar-left">
+                <button
+                    type="button"
+                    class="mobile-menu-button"
+                    id="mobileMenuButton"
+                    aria-label="Abrir menu"
+                    aria-expanded="false"
+                    aria-controls="sidebar"
+                >☰</button>
+
+                <div class="page-title-block">
+                    <h1>Gestão de Disciplinas</h1>
+                    <p>Organiza as disciplinas e associa-as aos cursos e professores.</p>
+                </div>
+            </div>
+
+            <div class="topbar-actions">
+                <label class="theme-control" for="themeSelect">
+                    <span>🎨 Tema</span>
+                    <select id="themeSelect" aria-label="Escolher tema">
+                        <option value="purple">Roxo</option>
+                        <option value="blue">Azul</option>
+                        <option value="green">Verde</option>
+                        <option value="orange">Laranja</option>
+                        <option value="pink">Rosa</option>
+                    </select>
+                </label>
+            </div>
+        </header>
+
+        <section class="page-content">
+
+            <div class="student-stats">
+                <article class="student-stat-card">
+                    <div class="stat-icon">📚</div>
+                    <div>
+                        <p>Total de disciplinas</p>
+                        <h2 id="totalSubjects">0</h2>
+                    </div>
+                </article>
+
+                <article class="student-stat-card">
+                    <div class="stat-icon">✓</div>
+                    <div>
+                        <p>Disciplinas ativas</p>
+                        <h2 id="activeSubjects">0</h2>
+                    </div>
+                </article>
+
+                <article class="student-stat-card">
+                    <div class="stat-icon">Ⅱ</div>
+                    <div>
+                        <p>Disciplinas inativas</p>
+                        <h2 id="inactiveSubjects">0</h2>
+                    </div>
+                </article>
+            </div>
+
+            <section class="content-card">
+                <div class="section-heading">
+                    <div>
+                        <h2>Lista de disciplinas</h2>
+                        <p>Consulta, pesquisa e administra as disciplinas registadas.</p>
+                    </div>
+
+                    <button type="button" class="primary-button" id="addSubjectButton">
+                        + Nova disciplina
+                    </button>
+                </div>
+
+                <div class="student-toolbar">
+                    <input
+                        type="search"
+                        id="subjectSearch"
+                        placeholder="Pesquisar por código, nome ou professor..."
+                        aria-label="Pesquisar disciplinas"
+                    >
+
+                    <select id="subjectStatusFilter" aria-label="Filtrar por estado">
+                        <option value="all">Todos os estados</option>
+                        <option value="Ativo">Ativas</option>
+                        <option value="Inativo">Inativas</option>
+                    </select>
+
+                    <select id="subjectCourseFilter" aria-label="Filtrar por curso">
+                        <option value="all">Todos os cursos</option>
+                    </select>
+                </div>
+
+                <div class="table-responsive">
+                    <table class="students-table">
+                        <thead>
+                            <tr>
+                                <th>Código</th>
+                                <th>Disciplina</th>
+                                <th>Curso</th>
+                                <th>Professor responsável</th>
+                                <th>Carga horária</th>
+                                <th>Estado</th>
+                                <th>Ações</th>
+                            </tr>
+                        </thead>
+
+                        <tbody id="subjectsTableBody">
+                            <tr>
+                                <td colspan="7" class="subject-empty-state">
+                                    A carregar disciplinas...
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="table-footer">
+                    <span id="subjectsCount">0 disciplinas</span>
+                </div>
+            </section>
+        </section>
+    </main>
+
+    <!-- Modal de criação e edição -->
+    <div class="modal" id="subjectModal" aria-hidden="true">
+        <div class="modal-backdrop" id="subjectModalBackdrop"></div>
+
+        <section
+            class="modal-content"
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="subjectModalTitle"
+        >
+            <div class="modal-heading">
+                <div>
+                    <h2 id="subjectModalTitle">Nova disciplina</h2>
+                    <p>Preenche os dados da disciplina.</p>
+                </div>
+
+                <button
+                    type="button"
+                    class="modal-close"
+                    id="closeSubjectModal"
+                    aria-label="Fechar janela"
+                >×</button>
+            </div>
+
+            <form id="subjectForm">
+                <input type="hidden" id="subjectId">
+
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label for="subjectCode">Código *</label>
+                        <input
+                            type="text"
+                            id="subjectCode"
+                            maxlength="30"
+                            placeholder="Ex.: DISC001"
+                            required
+                        >
+                    </div>
+
+                    <div class="form-group">
+                        <label for="subjectName">Nome da disciplina *</label>
+                        <input
+                            type="text"
+                            id="subjectName"
+                            maxlength="100"
+                            placeholder="Ex.: Matemática"
+                            required
+                        >
+                    </div>
+
+                    <div class="form-group">
+                        <label for="subjectCourse">Curso *</label>
+                        <select id="subjectCourse" required>
+                            <option value="">Seleciona um curso</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="subjectTeacher">Professor responsável</label>
+                        <select id="subjectTeacher">
+                            <option value="">Sem professor atribuído</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="subjectHours">Carga horária (horas) *</label>
+                        <input
+                            type="number"
+                            id="subjectHours"
+                            min="1"
+                            max="10000"
+                            step="1"
+                            placeholder="Ex.: 120"
+                            required
+                        >
+                    </div>
+
+                    <div class="form-group">
+                        <label for="subjectStatus">Estado *</label>
+                        <select id="subjectStatus" required>
+                            <option value="Ativo">Ativa</option>
+                            <option value="Inativo">Inativa</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="subjectDescription">Descrição</label>
+                        <textarea
+                            id="subjectDescription"
+                            rows="4"
+                            maxlength="500"
+                            placeholder="Descrição breve da disciplina (opcional)"
+                        ></textarea>
+                    </div>
+                </div>
+
+                <p id="subjectFormMessage" class="form-message" role="status" aria-live="polite"></p>
+
+                <div class="modal-actions">
+                    <button type="button" class="secondary-button" id="cancelSubjectModal">
+                        Cancelar
+                    </button>
+                    <button type="submit" class="primary-button" id="saveSubjectButton">
+                        Guardar disciplina
+                    </button>
+                </div>
+            </form>
+        </section>
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Comunidade - Sistema Escolar</title>
+
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/temas.css">
+
+</head>
+
+<body>
+
+<div class="app">
+
+    <!-- MENU -->
+
+        <aside class="sidebar">
+
+            <div class="sidebar-header">
+                <h2>🏫 Sistema Escolar</h2>
+            </div>
+
+            <nav class="sidebar-menu">
+
+                <p class="menu-title">SERVIÇOS</p>
+
+                <a href="biblioteca.html" class="nav-item">
+                    <span>📚</span>
+                    <span>Biblioteca</span>
+                </a>
+                
+                <a href="avisos.html" class="nav-item">
+                    <span>📢</span>
+                    <span>Avisos</span>
+                </a>
+                
+                <a href="pagamentos.html" class="nav-item">
+                    <span>💰</span>
+                    <span>Pagamentos</span>
+                </a>
+                
+                <a href="relatorios.html" class="nav-item">
+                    <span>📄</span>
+                    <span>Relatórios</span>
+                </a>
+                
+                <a href="mercado.html" class="nav-item">
+                    <span>🛒</span>
+                    <span>Mercado</span>
+                </a>
+                
+                <a href="comunidade.html" class="nav-item">
+                    <span>🌐</span>
+                    <span>Comunidade</span>
+                </a>
+
+            </nav>
+
+            <div class="sidebar-footer">
+
+            <a href="configuracoes.html" class="nav-item">
+                <span>⚙️</span>
+                <span>Configurações</span>
+            </a>
+
+            <button class="nav-item logout-button" id="logoutBtn">
+                <span>🚪</span>
+                <span>Sair</span>
+            </button>
+
+        </div>
+
+    </aside>
+
+            
+
+
+
+    <!-- CONTEÚDO -->
+    <main class="main-content">
+
+        <header class="topbar">
+
+            <button
+                class="menu-mobile"
+                onclick="toggleSidebar()"
+            >
+                ☰
+            </button>
+
+            <div>
+                <h1>🌐 Comunidade</h1>
+                <p>
+                    Compartilhe momentos e interaja com a comunidade escolar.
+                </p>
+            </div>
+
+            <button
+                class="btn-primary"
+                onclick="abrirPublicacao()"
+            >
+                + Publicar
+            </button>
+
+        </header>
+
+
+        <!-- MENU DA COMUNIDADE -->
+        <div class="community-tabs">
+
+            <button class="community-tab active">
+                🏠 Feed
+            </button>
+
+            <button class="community-tab">
+                📸 Fotos
+            </button>
+
+            <button class="community-tab">
+                🎥 Vídeos
+            </button>
+
+            <button class="community-tab">
+                👥 Grupos
+            </button>
+
+            <button class="community-tab">
+                🔔 Notificações
+            </button>
+
+        </div>
+
+
+        <!-- FEED -->
+        <section class="community-feed">
+
+
+            <!-- PUBLICAÇÃO -->
+            <article class="post-card">
+
+                <div class="post-header">
+
+                    <div class="post-avatar">
+                        👨‍🏫
+                    </div>
+
+                    <div>
+
+                        <strong>Professor Carlos</strong>
+
+                        <small>
+                            Professor • há 20 min
+                        </small>
+
+                    </div>
+
+                </div>
+
+
+                <div class="post-content">
+
+                    <p>
+                        Hoje tivemos uma excelente atividade
+                        com os estudantes. 📚👏
+                    </p>
+
+                </div>
+
+
+                <div class="post-stats">
+
+                    <span>
+                        ❤️ 24 curtidas
+                    </span>
+
+                    <span>
+                        👁️ 138 visualizações
+                    </span>
+
+                    <span>
+                        💬 8 comentários
+                    </span>
+
+                </div>
+
+
+                <div class="post-actions">
+
+                    <button>
+                        ❤️ Curtir
+                    </button>
+
+                    <button>
+                        💬 Comentar
+                    </button>
+
+                    <button>
+                        ↗️ Compartilhar
+                    </button>
+
+                </div>
+
+            </article>
+
+
+            <!-- OUTRA PUBLICAÇÃO -->
+            <article class="post-card">
+
+                <div class="post-header">
+
+                    <div class="post-avatar">
+                        👩‍🎓
+                    </div>
+
+                    <div>
+
+                        <strong>Ana Maria</strong>
+
+                        <small>
+                            Estudante • há 1 hora
+                        </small>
+
+                    </div>
+
+                </div>
+
+
+                <div class="post-content">
+
+                    <p>
+                        Preparando tudo para a nossa próxima
+                        apresentação! 🎓✨
+                    </p>
+
+                    <div class="post-image">
+                        📸
+                    </div>
+
+                </div>
+
+
+                <div class="post-stats">
+
+                    <span>
+                        ❤️ 41 curtidas
+                    </span>
+
+                    <span>
+                        👁️ 246 visualizações
+                    </span>
+
+                    <span>
+                        💬 13 comentários
+                    </span>
+
+                </div>
+
+
+                <div class="post-actions">
+
+                    <button>
+                        ❤️ Curtir
+                    </button>
+
+                    <button>
+                        💬 Comentar
+                    </button>
+
+                    <button>
+                        ↗️ Compartilhar
+                    </button>
+
+                </div>
+
+            </article>
+
+
+        </section>
+
+    </main>
+
+</div>
+
+
+<!-- MODAL PUBLICAÇÃO -->
+<div
+    id="modalPublicacao"
+    class="modal"
+>
+
+    <div class="modal-content">
+
+        <button
+            class="modal-close"
+            onclick="fecharPublicacao()"
+        >
+            ×
+        </button>
+
+        <h2>🌐 Criar publicação</h2>
+
+
+        <form id="formPublicacao">
+
+            <label>
+                O que você quer compartilhar?
+            </label>
+
+            <textarea
+                rows="5"
+                placeholder="Escreva alguma coisa..."
+            ></textarea>
+
+
+            <label>
+                Foto ou vídeo
+            </label>
+
+            <input
+                type="file"
+                accept="image/*,video/*"
+            >
+
+
+            <button
+                type="submit"
+                class="btn-primary"
+            >
+                Publicar
+            </button>
+
+        </form>
+
+    </div>
+
+</div>
+
+
+<script src="js/tema.js"></script>
+
+<script>
+
+    function abrirPublicacao() {
+
+        document
+            .getElementById("modalPublicacao")
+            .classList
+            .add("show");
+
+    }
+
+
+    function fecharPublicacao() {
+
+        document
+            .getElementById("modalPublicacao")
+            .classList
+            .remove("show");
+
+    }
+
+
+    function toggleSidebar() {
+
+        document
+            .querySelector(".sidebar")
+            .classList
+            .toggle("open");
+
+    }
+
+
+    document
+        .getElementById("formPublicacao")
+        .addEventListener(
+            "submit",
+            function(event) {
+
+                event.preventDefault();
+
+                alert(
+                    "A publicação será criada quando o sistema estiver ligado ao banco de dados."
+                );
+
+                fecharPublicacao();
+
+            }
+        );
+
+</script>
+
+</body>
+</html>

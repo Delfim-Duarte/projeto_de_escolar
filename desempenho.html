@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#6d28d9">
+  <title>Desempenho | EduGest</title>
+
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/temas.css">
+  <link rel="stylesheet" href="css/desempenho.css">
+</head>
+
+<body class="theme-purple desempenho-page">
+  <div class="mobile-overlay" id="mobileOverlay"></div>
+
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-header">
+      <a class="sidebar-brand" href="dashboard.html">
+        <span class="brand-mark">
+          <img src="assets/Ipn logo.jpg" alt="" width="50">
+        </span>
+        <span>Sistema <strong>Escolar</strong></span>
+        <span class="brand-mark" aria-hidden="true">SE</span>
+      </a>
+
+      <button class="sidebar-close" id="closeSidebar"
+        type="button" aria-label="Fechar menu">×</button>
+    </div>
+
+    <nav class="sidebar-nav">
+      <p class="menu-title">MENU PRINCIPAL</p>
+      <a href="dashboard.html" class="nav-item"><span>▦</span> Painel inicial</a>
+      <a href="estudantes.html" class="nav-item"><span>♙</span> Estudantes</a>
+      <a href="professores.html" class="nav-item"><span>♧</span> Professores</a>
+      <a href="cursos.html" class="nav-item"><span>▤</span> Cursos</a>
+      <a href="turmas.html" class="nav-item"><span>▣</span> Turmas</a>
+      <a href="disciplinas.html" class="nav-item"><span>▧</span> Disciplinas</a>
+      <a href="desempenho.html" class="nav-item active" aria-current="page"><span>↗</span> Desempenho</a>
+      <a href="horarios.html" class="nav-item"><span>◷</span> Horários</a>
+      <a href="biblioteca.html" class="nav-item"><span>▥</span> Biblioteca</a>
+      <a href="avisos.html" class="nav-item"><span>♢</span> Avisos</a>
+      <a href="pagamentos.html" class="nav-item"><span>◇</span> Pagamentos</a>
+      <a href="relatorios.html" class="nav-item"><span>▤</span> Relatórios</a>
+
+      <p class="menu-title">COMUNIDADE</p>
+      <a href="mercado.html" class="nav-item"><span>🛍</span> Mercado</a>
+      <a href="comunidade.html" class="nav-item"><span>◎</span> Comunidade</a>
+      <a href="grupos.html" class="nav-item"><span>♧</span> Grupos</a>
+
+      <p class="menu-title">PREFERÊNCIAS</p>
+      <a href="perfil.html" class="nav-item"><span>♙</span> Meu perfil</a>
+      <a href="configuracoes.html" class="nav-item"><span>⚙</span> Configurações</a>
+    </nav>
+
+    <div class="sidebar-bottom">
+      <div class="user-mini">
+        <div class="user-avatar">A</div>
+        <div>
+          <strong>Administrador</strong>
+          <small>Gestão escolar</small>
+        </div>
+      </div>
+
+      <button class="logout-button" id="logoutButton" type="button">
+        ↪ Terminar sessão
+      </button>
+    </div>
+  </aside>
+
+  <main class="main-content">
+    <header class="performance-header">
+      <div class="header-left">
+        <button class="mobile-menu-button" id="mobileMenuButton"
+          type="button" aria-label="Abrir menu"
+          aria-expanded="false" aria-controls="sidebar">☰</button>
+
+        <div>
+          <p class="eyebrow">ÁREA PEDAGÓGICA</p>
+          <h1>Desempenho escolar</h1>
+          <p class="page-description">
+            Acompanha os resultados, a evolução e as necessidades dos estudantes.
+          </p>
+        </div>
+      </div>
+
+      <div class="header-actions">
+        <label class="theme-control" for="themeSelect">
+          <span aria-hidden="true">🎨</span>
+          <select id="themeSelect" aria-label="Escolher tema de cor">
+            <option value="purple">Roxo</option>
+            <option value="blue">Azul</option>
+            <option value="green">Verde</option>
+            <option value="orange">Laranja</option>
+            <option value="pink">Rosa</option>
+          </select>
+        </label>
+
+        <div class="school-year-group">
+          <span class="school-year-label">Ano letivo</span>
+          <span class="year-pill">2026/2027</span>
+        </div>
+      </div>
+    </header>
+
+    <section class="performance-filters" aria-label="Filtros do desempenho">
+      <div class="filter-field">
+        <label for="schoolYear">Ano letivo</label>
+        <select id="schoolYear">
+          <option value="2026/2027" selected>2026/2027</option>
+          <option value="2025/2026">2025/2026</option>
+        </select>
+      </div>
+
+      <div class="filter-field">
+        <label for="trimester">Trimestre</label>
+        <select id="trimester">
+          <option value="1">1.º trimestre</option>
+          <option value="2">2.º trimestre</option>
+          <option value="3">3.º trimestre</option>
+        </select>
+      </div>
+
+      <div class="filter-field">
+        <label for="courseFilter">Curso</label>
+        <select id="courseFilter">
+          <option value="all">Todos os cursos</option>
+          <option value="informatica">Informática</option>
+          <option value="gestao">Gestão Empresarial</option>
+          <option value="contabilidade">Contabilidade</option>
+        </select>
+      </div>
+
+      <div class="filter-field">
+        <label for="classFilter">Turma</label>
+        <select id="classFilter">
+          <option value="all">Todas as turmas</option>
+          <option value="10A">10.ª Informática A</option>
+          <option value="11A">11.ª Gestão A</option>
+          <option value="12B">12.ª Contabilidade B</option>
+        </select>
+      </div>
+
+      <button id="applyFilters" class="primary-button" type="button">
+        Aplicar filtros
+      </button>
+    </section>
+
+    <div class="demo-notice" id="demoNotice">
+      <span class="notice-icon">ⓘ</span>
+      <p>
+        <strong>Modo de demonstração:</strong>
+        os indicadores apresentados são exemplos visuais, não resultados oficiais.
+      </p>
+    </div>
+
+    <section class="section-heading">
+      <div>
+        <h2>Resumo académico</h2>
+        <p>Visão geral do desempenho no período selecionado.</p>
+      </div>
+      <span class="period-badge" id="periodLabel">1.º trimestre</span>
+    </section>
+
+    <section class="stats-grid" aria-label="Indicadores académicos">
+      <article class="stat-card stat-purple">
+        <div class="stat-top">
+          <span class="stat-label">Média geral</span>
+          <span class="stat-icon">◉</span>
+        </div>
+        <div class="stat-value">13,8<span>/20</span></div>
+        <p class="stat-foot">Média demonstrativa do período</p>
+      </article>
+
+      <article class="stat-card stat-green">
+        <div class="stat-top">
+          <span class="stat-label">Aprovados</span>
+          <span class="stat-icon">✓</span>
+        </div>
+        <div class="stat-value">78<span>%</span></div>
+        <p class="stat-foot">Percentagem demonstrativa</p>
+      </article>
+
+      <article class="stat-card stat-orange">
+        <div class="stat-top">
+          <span class="stat-label">Em dificuldade</span>
+          <span class="stat-icon">!</span>
+        </div>
+        <div class="stat-value">12</div>
+        <p class="stat-foot">Estudantes abaixo de 10 valores</p>
+      </article>
+
+      <article class="stat-card stat-blue">
+        <div class="stat-top">
+          <span class="stat-label">Notas pendentes</span>
+          <span class="stat-icon">◷</span>
+        </div>
+        <div class="stat-value">8</div>
+        <p class="stat-foot">Registos por completar ou submeter</p>
+      </article>
+    </section>
+
+    <section class="dashboard-grid">
+      <article class="panel performance-chart-panel">
+        <div class="panel-heading">
+          <div>
+            <h2>Evolução das médias</h2>
+            <p>Comparação ilustrativa entre os trimestres.</p>
+          </div>
+          <span class="panel-icon">↗</span>
+        </div>
+
+        <div class="chart-area" role="img"
+          aria-label="Gráfico demonstrativo das médias trimestrais.">
+          <div class="chart-y-labels">
+            <span>20</span><span>15</span><span>10</span><span>5</span><span>0</span>
+          </div>
+          <div class="chart-plot">
+            <div class="chart-grid-lines">
+              <span></span><span></span><span></span><span></span><span></span>
+            </div>
+            <div class="chart-bars">
+              <div class="chart-bar-group">
+                <span class="bar-value">12,4</span>
+                <div class="chart-bar bar-one" style="height:62%"></div>
+                <span class="bar-label">1.º Tri.</span>
+              </div>
+              <div class="chart-bar-group">
+                <span class="bar-value">13,1</span>
+                <div class="chart-bar bar-two" style="height:65.5%"></div>
+                <span class="bar-label">2.º Tri.</span>
+              </div>
+              <div class="chart-bar-group">
+                <span class="bar-value">13,8</span>
+                <div class="chart-bar bar-three" style="height:69%"></div>
+                <span class="bar-label">3.º Tri.</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <p class="chart-footnote">
+          Dados ilustrativos — serão ligados às notas reais numa etapa posterior.
+        </p>
+      </article>
+
+      <article class="panel distribution-panel">
+        <div class="panel-heading">
+          <div>
+            <h2>Distribuição dos resultados</h2>
+            <p>Exemplo de classificação por intervalo.</p>
+          </div>
+          <span class="panel-icon">▥</span>
+        </div>
+
+        <div class="distribution-list">
+          <div class="distribution-item">
+            <div class="distribution-label"><span>0–9 valores</span><strong>22%</strong></div>
+            <div class="progress-track"><span class="progress-fill fill-red" style="width:22%"></span></div>
+          </div>
+          <div class="distribution-item">
+            <div class="distribution-label"><span>10–13 valores</span><strong>35%</strong></div>
+            <div class="progress-track"><span class="progress-fill fill-orange" style="width:35%"></span></div>
+          </div>
+          <div class="distribution-item">
+            <div class="distribution-label"><span>14–17 valores</span><strong>31%</strong></div>
+            <div class="progress-track"><span class="progress-fill fill-blue" style="width:31%"></span></div>
+          </div>
+          <div class="distribution-item">
+            <div class="distribution-label"><span>18–20 valores</span><strong>12%</strong></div>
+            <div class="progress-track"><span class="progress-fill fill-green" style="width:12%"></span></div>
+          </div>
+        </div>
+      </article>
+    </section>
+
+    <section class="lower-grid">
+      <article class="panel alerts-panel">
+        <div class="panel-heading">
+          <div>
+            <h2>Alertas pedagógicos</h2>
+            <p>Itens que podem precisar de atenção.</p>
+          </div>
+          <span class="alert-counter">3</span>
+        </div>
+
+        <div class="alert-list">
+          <div class="alert-item alert-danger">
+            <span class="alert-symbol">!</span>
+            <div>
+              <strong>Resultados abaixo de 10</strong>
+              <p>Exemplo de estudantes que precisam de acompanhamento.</p>
+            </div>
+            <span class="alert-number">12</span>
+          </div>
+
+          <div class="alert-item alert-warning">
+            <span class="alert-symbol">◷</span>
+            <div>
+              <strong>Avaliações incompletas</strong>
+              <p>Existem avaliações por registar neste exemplo.</p>
+            </div>
+            <span class="alert-number">5</span>
+          </div>
+
+          <div class="alert-item alert-info">
+            <span class="alert-symbol">↗</span>
+            <div>
+              <strong>Notas pendentes de aprovação</strong>
+              <p>Registos que aguardam análise da Direção.</p>
+            </div>
+            <span class="alert-number">8</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="panel shortcuts-panel">
+        <div class="panel-heading">
+          <div>
+            <h2>Acesso rápido</h2>
+            <p>Funcionalidades do módulo.</p>
+          </div>
+        </div>
+
+        <div class="shortcut-grid">
+          <a class="shortcut-card" href="pautas.html">
+            <span class="shortcut-icon shortcut-purple">☷</span>
+            <span><strong>Registar notas</strong><small>Avaliações e pautas</small></span>
+            <span class="shortcut-arrow">›</span>
+          </a>
+
+          <a class="shortcut-card" href="relatorios.html">
+            <span class="shortcut-icon shortcut-blue">▧</span>
+            <span><strong>Relatórios</strong><small>Resultados académicos</small></span>
+            <span class="shortcut-arrow">›</span>
+          </a>
+
+          <button class="shortcut-card" id="rankingButton" type="button">
+            <span class="shortcut-icon shortcut-orange">♛</span>
+            <span><strong>Ranking</strong><small>Melhores resultados</small></span>
+            <span class="shortcut-arrow">›</span>
+          </button>
+
+          <button class="shortcut-card" id="progressButton" type="button">
+            <span class="shortcut-icon shortcut-green">↗</span>
+            <span><strong>Progresso individual</strong><small>Evolução do estudante</small></span>
+            <span class="shortcut-arrow">›</span>
+          </button>
+        </div>
+        <p class="shortcut-feedback" id="shortcutFeedback" aria-live="polite"></p>
+      </article>
+    </section>
+
+    <footer class="performance-footer">
+      <span>EduGest · Sistema Escolar</span>
+      <span>Desempenho académico</span>
+    </footer>
+  </main>
+
+  <script src="js/tema.js"></script>
+  <script src="js/desempenho.js"></script>
+</body>
+</html>

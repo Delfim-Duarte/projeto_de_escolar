@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Gestão de professores da instituição escolar">
+    <title>Gestão de Professores | EduGest</title>
+
+    <link rel="stylesheet" href="css/temas.css">
+    <link rel="stylesheet" href="css/style.css">
+
+    <script src="js/tema.js" defer></script>
+    <script src="js/professores.js" defer></script>
+</head>
+<body class="theme-purple">
+
+    <div class="mobile-overlay" id="mobileOverlay"></div>
+
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <div>
+                        <a class="sidebar-brand" href="professores.html">
+      <span class="brand-mark"><img src="assets/Ipn logo.jpg" alt="" width="50px"></span>
+      <span>Sistema <strong>Escolar</strong></span>
+      <div class="brand-mark" aria-hidden="true">SE</div>
+    </a>
+            </div>
+        </div>
+
+        <nav class="sidebar-nav">
+            <p class="menu-title">MENU PRINCIPAL</p>
+            <a href="dashboard.html" class="nav-item"><span>▦</span> Painel principal</a>
+            <a href="estudantes.html" class="nav-item"><span>♙</span> Estudantes</a>
+            <a href="professores.html" class="nav-item active"><span>♧</span> Professores</a>
+            <a href="cursos.html" class="nav-item"><span>▤</span> Cursos</a>
+            <a href="turmas.html" class="nav-item"><span>▣</span> Turmas</a>
+            <a href="disciplinas.html" class="nav-item"><span>▧</span> Disciplinas</a>
+            <a href="desempenho.html" class="nav-item"><span>◷</span> Desempenho</a>
+            <a href="horarios.html" class="nav-item"><span>◷</span> Horários</a>
+            <a href="biblioteca.html" class="nav-item"><span>▥</span> Biblioteca</a>
+            <a href="avisos.html" class="nav-item"><span>♧</span> Avisos</a>
+            <a href="pagamentos.html" class="nav-item"><span>◇</span> Pagamentos</a>
+            <a href="relatorios.html" class="nav-item"><span>▤</span> Relatórios</a>
+
+            <p class="menu-title">COMUNIDADE</p>
+            <a href="mercado.html" class="nav-item"><span>🛍</span> Mercado</a>
+            <a href="comunidade.html" class="nav-item"><span>☷</span> Comunidade</a>
+            <a href="grupos.html" class="nav-item"><span>♧</span> Grupos</a>
+
+            <p class="menu-title">CONTA</p>
+            <a href="perfil.html" class="nav-item"><span>♙</span> Meu perfil</a>
+            <a href="configuracoes.html" class="nav-item"><span>⚙</span> Configurações</a>
+        </nav>
+
+        <div class="sidebar-bottom">
+            <div class="user-mini">
+                <div class="user-avatar">AD</div>
+                <div>
+                    <strong>Administrador</strong>
+                    <small>Direção escolar</small>
+                </div>
+            </div>
+            <button type="button" class="logout-button" id="logoutButton">
+                ↪ Terminar sessão
+            </button>
+        </div>
+    </aside>
+
+    <main class="main-content">
+        <header class="topbar">
+            <div class="topbar-left">
+                <button type="button" class="mobile-menu-button"
+                        id="mobileMenuButton" aria-label="Abrir menu"
+                        aria-expanded="false">☰</button>
+
+                <div class="page-title-block">
+                    <span class="page-title-label">ADMINISTRAÇÃO ESCOLAR</span>
+                    <h1>Gestão de Professores</h1>
+                    <p>Regista, consulta e acompanha os professores da instituição.</p>
+                </div>
+            </div>
+
+            <div class="topbar-actions">
+               <label class="theme-control" for="themeSelect">
+  <span aria-hidden="true">◐</span>
+  <select id="themeSelect" aria-label="Escolher tema de cor">
+    <option value="purple">Roxo</option>
+    <option value="blue">Azul</option>
+    <option value="green">Verde</option>
+    <option value="orange">Preta</option>
+    <option value="pink">Rosa</option>
+  </select>
+</label>
+            </div>
+        </header>
+
+        <section class="page-content">
+
+            <div class="student-stats">
+                <article class="student-stat-card">
+                    <div>
+                        <p>Total de professores</p>
+                        <h2 id="totalTeachers">0</h2>
+                    </div>
+                    <span class="stat-icon">♧</span>
+                </article>
+
+                <article class="student-stat-card">
+                    <div>
+                        <p>Professores ativos</p>
+                        <h2 id="activeTeachers">0</h2>
+                    </div>
+                    <span class="stat-icon">✓</span>
+                </article>
+
+                <article class="student-stat-card">
+                    <div>
+                        <p>Professores inativos</p>
+                        <h2 id="inactiveTeachers">0</h2>
+                    </div>
+                    <span class="stat-icon">Ⅱ</span>
+                </article>
+            </div>
+
+            <section class="content-card">
+                <div class="section-heading">
+                    <div>
+                        <h2>Lista de professores</h2>
+                        <p>Consulta e administra os registos do corpo docente.</p>
+                    </div>
+
+                    <button type="button" class="primary-button"
+                            id="addTeacherButton">
+                        + Novo professor
+                    </button>
+                </div>
+
+                <div class="student-toolbar">
+                    <input type="search" id="teacherSearch"
+                           placeholder="Pesquisar por nome, número ou disciplina..."
+                           aria-label="Pesquisar professores">
+
+                    <select id="subjectFilter" aria-label="Filtrar por disciplina">
+                        <option value="">Todas as disciplinas</option>
+                    </select>
+
+                    <select id="teacherStatusFilter" aria-label="Filtrar por estado">
+                        <option value="">Todos os estados</option>
+                        <option value="Ativo">Ativo</option>
+                        <option value="Inativo">Inativo</option>
+                    </select>
+                </div>
+
+                <div class="table-responsive">
+                    <table class="students-table">
+                        <thead>
+                            <tr>
+                                <th>N.º</th>
+                                <th>Professor</th>
+                                <th>Disciplina</th>
+                                <th>Contacto</th>
+                                <th>Estado</th>
+                                <th>Ações</th>
+                            </tr>
+                        </thead>
+                        <tbody id="teachersTableBody">
+                            <tr>
+                                <td colspan="6">A carregar professores...</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <p class="table-footer" id="teacherCount">A carregar registos...</p>
+            </section>
+        </section>
+    </main>
+
+    <!-- Formulário de registo e edição -->
+    <div class="modal" id="teacherModal" role="dialog"
+         aria-modal="true" aria-labelledby="teacherModalTitle" hidden>
+
+        <div class="modal-backdrop" id="teacherModalBackdrop"></div>
+
+        <section class="modal-content">
+            <div class="modal-heading">
+                <div>
+                    <h2 id="teacherModalTitle">Novo professor</h2>
+                    <p>Preenche os dados do professor.</p>
+                </div>
+                <button type="button" id="closeTeacherModal"
+                        class="modal-close" aria-label="Fechar">×</button>
+            </div>
+
+            <form id="teacherForm">
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label for="teacherNumber">Número do professor *</label>
+                        <input id="teacherNumber" required maxlength="30"
+                               placeholder="Ex.: PROF001">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="teacherName">Nome completo *</label>
+                        <input id="teacherName" required maxlength="120"
+                               placeholder="Nome do professor">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="teacherSubject">Disciplina *</label>
+                        <input id="teacherSubject" required maxlength="80"
+                               placeholder="Ex.: Matemática">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="teacherPhone">Contacto</label>
+                        <input id="teacherPhone" type="tel" maxlength="30"
+                               placeholder="Número de telefone">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="teacherEmail">E-mail</label>
+                        <input id="teacherEmail" type="email" maxlength="120"
+                               placeholder="professor@escola.ao">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="teacherStatus">Estado</label>
+                        <select id="teacherStatus">
+                            <option value="Ativo">Ativo</option>
+                            <option value="Inativo">Inativo</option>
+                        </select>
+                    </div>
+                </div>
+
+                <p class="form-message" id="teacherFormMessage" role="alert"></p>
+
+                <div class="modal-actions">
+                    <button type="button" class="secondary-button"
+                            id="cancelTeacherButton">Cancelar</button>
+                    <button type="submit" class="primary-button">
+                        Guardar professor
+                    </button>
+                </div>
+            </form>
+        </section>
+    </div>
+
+</body>
+</html>
